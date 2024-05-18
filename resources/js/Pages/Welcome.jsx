@@ -1,48 +1,23 @@
-import { Link, Head } from '@inertiajs/react';
+import Cards from '@/Components/BlogCards/Cards';
+import NavBar from '@/Components/NavigationBar/NavBar';
 
-export default function Welcome({ auth }) {
+
+export default function Welcome() {
     return (
         <>
-            <Head title="Welcome" />
-            <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
-                    {auth.user ? (
-                        <Link
-                            href={route('dashboard')}
-                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                        >
-                            Dashboard
-                        </Link>
-                    ) : (
-                        <>
-                            <Link
-                                href={route('login')}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Log in
-                            </Link>
-
-                            <Link
-                                href={route('register')}
-                                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Register
-                            </Link>
-                        </>
-                    )}
-                </div>
-
-                <div className="max-w-7xl mx-auto p-6 lg:p-8">
-                    <h1 className='test'>Welcome</h1>
-                </div>
+            <div className='w-9/12 m-auto py-4'>
+                <NavBar/>
             </div>
 
-            <style>{`
-                .test {
-                    color: red;
-                }
+            <div className='w-9/12 m-auto grid grid-cols-2 gap-6 justify-center'>
+                <Cards imgSrc="https://images.pexels.com/photos/811838/pexels-photo-811838.jpeg?auto=compress&cs=tinysrgb&w=800"/>
+                <Cards imgSrc="https://images.pexels.com/photos/2220286/pexels-photo-2220286.jpeg?auto=compress&cs=tinysrgb&w=800"/>
+                <Cards imgSrc="https://images.pexels.com/photos/220755/pexels-photo-220755.jpeg?auto=compress&cs=tinysrgb&w=800"/>
+                <Cards imgSrc="https://images.pexels.com/photos/1126380/pexels-photo-1126380.jpeg?auto=compress&cs=tinysrgb&w=800"/>
+                <Cards imgSrc="https://images.pexels.com/photos/1448136/pexels-photo-1448136.jpeg?auto=compress&cs=tinysrgb&w=800" />
+                <Cards imgSrc="https://images.pexels.com/photos/1035682/pexels-photo-1035682.jpeg?auto=compress&cs=tinysrgb&w=800" />
+            </div>
 
-            `}</style>
         </>
     );
 }
