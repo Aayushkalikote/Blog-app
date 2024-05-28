@@ -13,7 +13,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blog = Blog::orderBy('created_at','DESC')->get();
+        return response()->json([
+            'status'=>'true',
+            'data'=>$blog
+        ]);
     }
 
 
@@ -40,6 +44,12 @@ class BlogController extends Controller
             $blog->author = $request->input('author');
             $blog->title = $request->input('title');
             $blog->description = $request->input('description');
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time().'.'.$image->getClientOriginalExtension();
+                $image->move('uploads/blogs/', $imageName);
+                $blog->image = 'uploads/blogs/'.$imageName;
+            }
             $blog->save();
             return response()->json([
                 'status' => true,
